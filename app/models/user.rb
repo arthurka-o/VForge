@@ -12,7 +12,9 @@ class User < ApplicationRecord
 
   has_many :sessions, dependent: :destroy
   has_and_belongs_to_many :traits,
-                          association_foreign_key: 'user_trait_id'
+                          association_foreign_key: 'user_trait_id',
+                          strict_loading: true
+  has_one_attached :avatar, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_nil: true, length: { minimum: 8 }
@@ -25,5 +27,9 @@ class User < ApplicationRecord
 
   after_update if: :password_digest_previously_changed? do
     sessions.where.not(id: Current.session).delete_all
+  end
+
+  def bio
+    traits.find_by(name: :bio)&.value
   end
 end

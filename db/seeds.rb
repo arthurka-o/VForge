@@ -19,8 +19,20 @@ user = User.create!(email: 'me@arthurka.eu') do |u|
   password = 'qwer1234'
   u.password = password
   u.password_confirmation = password
-
+  u.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'avatar.png')), filename: 'avatar.png')
   u.username = 'Arthur'
+end
+
+user.traits.create(name: 'bio', category: User::Trait::Category.find_by(name: 'prompt')) do |trait|
+  trait.value = 'I am a software developer.'
+end
+
+user.traits.create(name: 'Games', category: User::Trait::Category.find_by(name: 'interest')) do |trait|
+  trait.value = 'Dota 2'
+end
+
+user.traits.create(name: 'Games', category: User::Trait::Category.find_by(name: 'interest')) do |trait|
+  trait.value = Faker::Game.title
 end
 
 10.times do

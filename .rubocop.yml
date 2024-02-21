@@ -8,5 +8,6 @@ Metrics/AbcSize:
 # Exclude schema.rb
 AllCops:
   Exclude:
-    - "db/schema.rb"
+    - "db/*"
+    - "config/*"
 
