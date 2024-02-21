@@ -11,9 +11,7 @@ class User < ApplicationRecord
   end
 
   has_many :sessions, dependent: :destroy
-  has_and_belongs_to_many :traits,
-                          association_foreign_key: 'user_trait_id',
-                          strict_loading: true
+  has_many :traits, strict_loading: true
   has_one_attached :avatar, dependent: :destroy
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }

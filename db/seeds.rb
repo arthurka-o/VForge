@@ -11,10 +11,6 @@
 #   end
 require 'faker'
 
-User::Trait::Category.find_or_create_by!(name: 'basic')
-User::Trait::Category.find_or_create_by!(name: 'interest')
-User::Trait::Category.find_or_create_by!(name: 'prompt')
-
 user = User.create!(email: 'me@arthurka.eu') do |u|
   password = 'qwer1234'
   u.password = password
@@ -23,15 +19,15 @@ user = User.create!(email: 'me@arthurka.eu') do |u|
   u.username = 'Arthur'
 end
 
-user.traits.create(name: 'bio', category: User::Trait::Category.find_by(name: 'prompt')) do |trait|
+user.traits.create(name: 'bio', category: :prompt) do |trait|
   trait.value = 'I am a software developer.'
 end
 
-user.traits.create(name: 'Games', category: User::Trait::Category.find_by(name: 'interest')) do |trait|
+user.traits.create(name: 'Games', category: :interest) do |trait|
   trait.value = 'Dota 2'
 end
 
-user.traits.create(name: 'Games', category: User::Trait::Category.find_by(name: 'interest')) do |trait|
+user.traits.create(name: 'Games', category: :interest) do |trait|
   trait.value = Faker::Game.title
 end
 
@@ -44,15 +40,15 @@ end
     u.username = Faker::Games::Dota.hero
   end
 
-  user.traits.create(name: 'Bio', category: User::Trait::Category.find_by(name: 'prompt')) do |trait|
+  user.traits.create(name: 'Bio', category: :prompt) do |trait|
     trait.value = Faker::Games::Dota.quote
   end
 
-  user.traits.create(name: 'Games', category: User::Trait::Category.find_by(name: 'interest')) do |trait|
+  user.traits.create(name: 'Games', category: :interest) do |trait|
     trait.value = 'Dota 2'
   end
 
-  user.traits.create(name: 'Games', category: User::Trait::Category.find_by(name: 'interest')) do |trait|
+  user.traits.create(name: 'Games', category: :interest) do |trait|
     trait.value = Faker::Game.title
   end
 end
