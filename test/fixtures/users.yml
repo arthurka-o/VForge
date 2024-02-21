@@ -1,11 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: First Test User
-  eth_address: "0x0000000000000000000000000000000000000000"
-  eth_nonce: "MyString1"
-
-two:
-  name: MyString
-  eth_address: "0x0000000000000000000000000000000000000001"
-  eth_nonce: "MyString2"
+lazaro_nixon:
+  email: lazaronixon@hotmail.com
+  password_digest: <%= BCrypt::Password.create("Secret1*3*5*") %>
+  verified: true
