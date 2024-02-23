@@ -17,9 +17,12 @@
         
         <div class="pt-3">
           <p class="text-3x1 text-gray-500">Interests</p>
-          <% Current.user.traits.interest.each do |trait| %>
-            <%= render partial: trait, locals: { edit: true } %>
-          <% end %>
+          <%= turbo_stream_from 'traits' %>
+          <div id="traits">
+            <% Current.user.traits.interest.each do |trait| %>
+              <%= render partial: trait, locals: { edit: true } %>
+            <% end %>
+          </div>
           <br>
           <br>
           <%= turbo_frame_tag 'add_new_trait' do %>

@@ -11,4 +11,6 @@ class Trait < ApplicationRecord
   }
 
   normalizes :name, with: -> { _1.strip.downcase }
+
+  after_create_commit { broadcast_append_to 'traits' }
 end
