@@ -16,20 +16,23 @@ user = User.create!(email: 'me@arthurka.eu') do |u|
   u.password = password
   u.password_confirmation = password
   u.avatar.attach(io: File.open(Rails.root.join('app', 'assets', 'images', 'avatar.png')), filename: 'avatar.png')
-  u.username = 'Arthur'
+  u.username = 'Arthur Arwell'
 end
 
 user.traits.create(name: 'bio', category: :prompt) do |trait|
   trait.value = 'I am a software developer.'
 end
 
-user.traits.create(name: 'Games', category: :interest) do |trait|
-  trait.value = 'Dota 2'
-end
+user.traits.create(category: :interest, name: 'Games', value: 'Dota 2', emoji: Emoji.find_by_alias('computer_mouse').raw)
+user.traits.create(category: :interest, name: 'Games', value: 'CS 2', emoji: Emoji.find_by_alias('gun').raw)
+user.traits.create(category: :interest, name: 'Games', value: 'Minecraft', emoji: Emoji.find_by_alias('pick').raw)
+user.traits.create(category: :interest, name: 'Games', value: 'Lethal Company', emoji: Emoji.find_by_alias('performing_arts').raw)
 
-user.traits.create(name: 'Games', category: :interest) do |trait|
-  trait.value = Faker::Game.title
-end
+user.traits.create(category: :basic, name: 'Looking for', value: 'Playmate', emoji: Emoji.find_by_alias('video_game').raw)
+user.traits.create(category: :basic, name: 'Language', value: 'Russian', emoji: Emoji.find_by_alias('ru').raw)
+user.traits.create(category: :basic, name: 'Language', value: 'English', emoji: Emoji.find_by_alias('uk').raw)
+user.traits.create(category: :basic, name: 'Language', value: 'Polish', emoji: Emoji.find_by_alias('poland').raw)
+user.traits.create(category: :basic, name: 'Timezone', value: 'CET', emoji: Emoji.find_by_alias('eu').raw)
 
 10.times do
   user = User.create!(email: Faker::Internet.email) do |u|
