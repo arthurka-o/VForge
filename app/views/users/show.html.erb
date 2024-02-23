@@ -1,4 +1,4 @@
-<%= turbo_frame_tag dom_id(Current.user, "turbo") do %>
+<%= turbo_frame_tag dom_id(@user, "turbo") do %>
   <%= render partial: 'profile_card' %>
 
   <%= link_to edit_user_path(@user) do %>

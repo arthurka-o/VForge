@@ -1,16 +1,16 @@
 # frozen_string_literal: true
 
 class TraitsController < ApplicationController
-  before_action :set_user_trait, only: %i[destroy]
+  before_action :set_trait, only: %i[destroy]
 
   def new
-    @user_trait = User::Trait.new
+    @trait = Trait.new
   end
 
   def create
-    @user_trait = User::Trait.new(user_trait_params)
+    @trait = Trait.new(trait_params)
 
-    if @user_trait.save
+    if @trait.save
       render 'users/edit'
     else
       render :new
@@ -18,20 +18,20 @@ class TraitsController < ApplicationController
   end
 
   def destroy
-    @user_trait = User::Trait.find(params[:id])
+    @trait = Trait.find(params[:id])
 
-    @user_trait.destroy
+    @trait.destroy
 
     turbo_stream
   end
 
   private
 
-  def set_user_trait
-    @user_trait = User::Trait.find(params[:id])
+  def set_trait
+    @trait = Trait.find(params[:id])
   end
 
-  def user_trait_params
-    params.require(:user_trait).permit(:category, :name, :value, :emoji).merge(user_id: Current.user.id)
+  def trait_params
+    params.require(:trait).permit(:category, :name, :value, :emoji).merge(user_id: Current.user.id)
   end
 end

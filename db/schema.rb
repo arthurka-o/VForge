@@ -48,7 +48,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_134803) do
     t.index ["user_id"], name: "index_sessions_on_user_id"
   end
 
-  create_table "user_traits", force: :cascade do |t|
+  create_table "traits", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "category"
     t.string "emoji"
@@ -56,7 +56,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_134803) do
     t.text "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_user_traits_on_user_id"
+    t.index ["user_id"], name: "index_traits_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,5 +72,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_134803) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "sessions", "users"
-  add_foreign_key "user_traits", "users"
+  add_foreign_key "traits", "users"
 end

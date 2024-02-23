@@ -18,12 +18,12 @@
         <div class="pt-3">
           <p class="text-3x1 text-gray-500">Interests</p>
           <% Current.user.traits.interest.each do |trait| %>
-            <%= render partial: 'users/trait', locals: { trait: trait, edit: true } %>
+            <%= render partial: trait, locals: { edit: true } %>
           <% end %>
           <br>
           <br>
-          <%= turbo_frame_tag 'add_new' do %>
-            <%= link_to new_user_trait_path(Current.user) do %>
+          <%= turbo_frame_tag 'add_new_trait' do %>
+            <%= link_to new_trait_path do %>
               <%= content_tag :div, class: %w[btn-trait bg-green-300] do %>
                 ➕ Add New
               <% end %>
@@ -34,7 +34,7 @@
         <div class="pt-3">
           <p class="text-3x1 text-gray-500">Basics</p>
           <% Current.user.traits.basic.sort_by(&:name).each do |trait| %>
-            <%= render partial: 'users/trait', locals: { trait: trait, edit: true } %>
+            <%= render partial: trait, locals: { edit: true } %>
           <% end %>
         </div>
       </div>

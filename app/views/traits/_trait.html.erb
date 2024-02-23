@@ -1,7 +1,7 @@
 <%= content_tag :div, class: %w[btn-trait], id: dom_id(trait) do %>
   <% edit ||= false %>
     <% if edit %>
-      <%= link_to 'x', user_trait_path(Current.user, trait), data: { turbo_method: :delete, turbo_action: 'remove' }, class: 'text-red-500 pr-2' %>
+      <%= link_to 'x', trait_path(trait), data: { turbo_method: :delete, turbo_action: 'remove' }, class: 'text-red-500 pr-2' %>
     <% end %>
     <%= trait.emoji %>
     <%= trait.value %>
