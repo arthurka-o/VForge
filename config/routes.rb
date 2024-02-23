@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resource :password_reset,     only: %i[new edit create update]
   end
   resources :users, only: %i[show edit update] do
-    resources :traits, only: %i[destroy]
+    resources :traits, only: %i[new create destroy]
   end
 
   root 'home#index'

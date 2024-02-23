@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import AutoSubmitController from "./auto_submit_controller"
 application.register("auto-submit", AutoSubmitController)
+
+import EmojiPickerController from "./emoji_picker_controller"
+application.register("emoji-picker", EmojiPickerController)

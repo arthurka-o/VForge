@@ -16,14 +16,14 @@
     <% end %>
     
     <div class="pt-3">
-      <p class="text-3x1 text-gray-500">Interests</p>
+      <p class=" text-gray-500">Interests</p>
       <% @user.traits.interest.each do |trait| %>
         <%= render partial: 'trait', locals: { trait: trait } %>
       <% end %>
     </div>
 
     <div class="pt-3">
-      <p class="text-3x1 text-gray-500">Basics</p>
+      <p class=" text-gray-500">Basics</p>
       <% @user.traits.basic.sort_by(&:name).each do |trait| %>
         <%= render partial: 'trait', locals: { trait: trait } %>
       <% end %>

@@ -2,12 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .btn-trait {
+    @apply inline-flex items-center justify-center px-3 py-1 mb-1 bg-pink-300 text-black rounded-full text-xs font-semibold uppercase tracking-wide;
   }
 }
-
-*/

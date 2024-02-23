@@ -1,0 +1,12 @@
+<%= turbo_frame_tag 'add_new' do %>
+  <%= link_to 'Close', edit_user_path(Current.user) %>
+  <%= form_with(model: User::Trait.new, data: { controller: "emoji-picker" }) do |form| %>
+    <div class="flex">
+      <%= render 'emojis/picker' %>
+      <%= form.hidden_field :emoji, data: { emoji_picker_target: 'hiddenInput' } %>
+      <%= form.hidden_field :category, value: 'interest' %>
+      <%= form.text_field :value %>
+      <%= form.submit '✅' %>
+    </div>
+  <% end %>
+<% end %>

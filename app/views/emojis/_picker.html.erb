@@ -1,0 +1,10 @@
+<%# <div class='absolute z-10 bg-neutral-400 p-3 w-full h-48 overflow-auto'> %>
+  <%= content_tag :div, class: 'btn-trait bg-gray-400 text-lg', data: { emoji_picker_target: "input", action: 'click->emoji-picker#switchPicker' } do %>
+    🙂
+  <% end %>
+  <%= content_tag :div, class: 'flex flex-wrap', data: { emoji_picker_target: 'picker' } do %>
+    <% Emoji.all.each do |emoji| %>
+      <%= content_tag :div, emoji.raw, data: { action: 'click->emoji-picker#insertEmoji' } %>
+    <% end %>
+  <% end %>
+<%# </div> %>
