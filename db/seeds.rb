@@ -11,7 +11,7 @@
 #   end
 require 'faker'
 
-user = User.create!(email: 'me@arthurka.eu') do |u|
+user = User.create!(email: 'a@a.com') do |u|
   password = 'qwer1234'
   u.password = password
   u.password_confirmation = password
@@ -20,7 +20,7 @@ user = User.create!(email: 'me@arthurka.eu') do |u|
 end
 
 user.traits.create(name: 'bio', category: :prompt) do |trait|
-  trait.value = 'I am a software developer.'
+  trait.value = 'I drizzle my jizzle'
 end
 
 user.traits.create(category: :interest, name: 'Games', value: 'Dota 2', emoji: Emoji.find_by_alias('computer_mouse').raw)
