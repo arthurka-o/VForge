@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resource :email_verification, only: %i[show create]
     resource :password_reset,     only: %i[new edit create update]
   end
-  resources :users, only: %i[show edit update]
+  resources :users, only: %i[show edit update] do
+    resources :traits, only: %i[destroy]
+  end
+
   root 'home#index'
 end

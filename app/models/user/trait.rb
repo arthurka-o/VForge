@@ -10,5 +10,7 @@ class User
       prompt: 'prompt',
       language: 'language'
     }
+
+    normalizes :name, with: -> { _1.strip.downcase }
   end
 end

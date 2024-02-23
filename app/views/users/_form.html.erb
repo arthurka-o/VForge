@@ -1,0 +1,34 @@
+<%= form_with(model: Current.user, data: { controller: "auto-submit", action: "input->auto-submit#update" } ) do |form| %>
+  <div>
+    <div class=" bg-slate-200 rounded-2xl shadow overflow-hidden mx-auto">
+      <% if @user.avatar.attached? %>
+        <div class="p-1 pb-0">
+          <image class="rounded-2xl object-cover w-full h-full" src="<%= url_for(@user.avatar) %>">
+        </div>
+      <% end %>
+
+      
+      <div class="p-6 pt-0">
+        <%= form.text_field :username, class: 'shadow appearance-none border rounded w-full mt-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', data: { auto_submit_target: "field" } %>
+
+        <%= form.fields_for :traits, Current.user.traits.find_or_initialize_by(category: :prompt, name: :bio) do |trait_form| %> <%# it works good if only bio is created beforehand. If not, it creates a trait without a name or category %>
+          <%= trait_form.text_area :value, class: 'shadow appearance-none border rounded w-full mt-2 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline', data: { auto_submit_target: "field" } %>
+        <% end %>
+        
+        <div class="pt-3">
+          <p class="text-3x1 text-gray-500">Interests</p>
+          <% Current.user.traits.interest.each do |trait| %>
+            <%= render partial: 'trait', locals: { trait: trait, edit: true } %>
+          <% end %>
+        </div>
+
+        <div class="pt-3">
+          <p class="text-3x1 text-gray-500">Basics</p>
+          <% Current.user.traits.basic.sort_by(&:name).each do |trait| %>
+            <%= render partial: 'trait', locals: { trait: trait, edit: true } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

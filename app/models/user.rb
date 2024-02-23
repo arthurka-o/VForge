@@ -11,8 +11,10 @@ class User < ApplicationRecord
   end
 
   has_many :sessions, dependent: :destroy
-  has_many :traits, strict_loading: true
+  has_many :traits
   has_one_attached :avatar, dependent: :destroy
+
+  accepts_nested_attributes_for :traits, allow_destroy: true
 
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, allow_nil: true, length: { minimum: 8 }

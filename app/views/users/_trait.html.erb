@@ -1,3 +1,8 @@
-<div class="inline-flex items-center justify-center px-3 py-1 bg-pink-500 text-white rounded-full text-xs font-semibold uppercase tracking-wide">
-  <%= trait.value %>
-</div>
+<%= content_tag :div, class: %w[inline-flex items-center justify-center px-3 py-1 mb-1 bg-pink-300 text-balck rounded-full text-xs font-semibold uppercase tracking-wide], id: dom_id(trait) do %>
+  <% edit ||= false %>
+    <% if edit %>
+      <%= link_to 'x', user_trait_path(Current.user, trait), data: { turbo_method: :delete, turbo_action: 'remove' }, class: 'text-red-500 pr-2' %>
+    <% end %>
+    <%= trait.emoji %>
+    <%= trait.value %>
+<% end %>
