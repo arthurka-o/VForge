@@ -11,12 +11,12 @@ export default class extends Controller {
     clearTimeout(this.timeout)
   }
 
-  update() {
+  update(event) {
     clearTimeout(this.timeout)
-    this.timeout = setTimeout(this.submit.bind(this), 500)
+    this.timeout = setTimeout(this.submit(event), 500)
   }
 
-  submit() {
-    this.fieldTarget.form.requestSubmit()
+  submit(event) {
+    event.currentTarget.form.requestSubmit()
   }
 }
