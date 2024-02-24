@@ -1,10 +1,10 @@
-<%# <div class='absolute z-10 bg-neutral-400 p-3 w-full h-48 overflow-auto'> %>
-  <%= content_tag :div, class: 'btn-trait bg-gray-400 text-lg', data: { emoji_picker_target: "input", action: 'click->emoji-picker#switchPicker' } do %>
-    🙂
-  <% end %>
-  <%= content_tag :div, class: 'flex flex-wrap', data: { emoji_picker_target: 'picker' } do %>
+<%= content_tag :div, class: 'btn-trait bg-gray-400 text-lg', data: { emoji_picker_target: "input", action: 'click->emoji-picker#switchPicker' } do %>
+  🙂
+<% end %>
+<%= content_tag :div, class: 'fixed inset-0 flex justify-center p-4 hidden bg-black bg-opacity-50', data: { emoji_picker_target: 'picker', action: 'click->emoji-picker#hidePicker' } do %>
+  <%= content_tag :div, class: 'p-4 w-full h-1/2 bg-white rounded-lg shadow-md overflow-auto' do %>
     <% Emoji.all.each do |emoji| %>
-      <%= content_tag :div, emoji.raw, data: { action: 'click->emoji-picker#insertEmoji' } %>
+      <%= content_tag :span, emoji.raw, class: 'text-xlT', data: { action: 'click->emoji-picker#insertEmoji' } %>
     <% end %>
   <% end %>
-<%# </div> %>
+<% end %>
