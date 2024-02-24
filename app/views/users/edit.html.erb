@@ -1,9 +1,0 @@
-<%= turbo_frame_tag dom_id(Current.user, "turbo") do %>
-  <%= render "users/form" %>
-
-  <%= link_to user_path(Current.user) do %>
-    <div class='py-2 px-4 bg-slate-300 rounded-xl mt-2 text-center font-medium'>
-      Back
-    </div>
-  <% end %>
-<% end %>

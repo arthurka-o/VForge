@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     resource :email_verification, only: %i[show create]
     resource :password_reset,     only: %i[new edit create update]
   end
-  resources :users, only: %i[show edit update]
+
+  get 'profile', to: 'profiles#show', as: :profile
+  get 'profile/edit', to: 'profiles#edit', as: :edit_profile
+  patch 'profile', to: 'profiles#update', as: :update_profile
+
   resources :traits, only: %i[new create destroy]
 
   root 'home#index'

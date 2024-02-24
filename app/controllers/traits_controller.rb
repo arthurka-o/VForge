@@ -11,7 +11,7 @@ class TraitsController < ApplicationController
     @trait = Trait.new(trait_params)
 
     if @trait.save
-      render 'users/edit'
+      render 'profiles/edit'
     else
       render :new
     end
@@ -21,8 +21,6 @@ class TraitsController < ApplicationController
     @trait = Trait.find(params[:id])
 
     @trait.destroy
-
-    turbo_stream
   end
 
   private
@@ -32,6 +30,6 @@ class TraitsController < ApplicationController
   end
 
   def trait_params
-    params.require(:trait).permit(:category, :name, :value, :emoji).merge(user_id: Current.user.id)
+    params.require(:trait).permit(:category, :name, :value, :emoji).merge(profile_id: Current.profile.id)
   end
 end
