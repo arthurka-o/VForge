@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
 
       respond_to do |format|
-        format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
+        format.html { redirect_to @profile, notice: "Profile was successfully updated." }
         format.turbo_stream
       end
     else

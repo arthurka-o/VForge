@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-ENV['RAILS_ENV'] ||= 'test'
-require_relative '../config/environment'
-require 'rails/test_help'
+ENV["RAILS_ENV"] ||= "test"
+require_relative "../config/environment"
+require "rails/test_help"
 
 module ActiveSupport
   class TestCase
@@ -14,7 +14,7 @@ module ActiveSupport
 
     # Add more helper methods to be used by all tests here...
     def sign_in_as(user)
-      post(sign_in_url, params: { email: user.email, password: 'Secret1*3*5*' })
+      post(sign_in_url, params: { email: user.email, password: "Secret1*3*5*" })
       user
     end
   end

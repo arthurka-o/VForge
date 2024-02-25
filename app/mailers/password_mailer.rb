@@ -5,6 +5,6 @@ class PasswordMailer < ApplicationMailer
     @user = params[:user]
     @token = params[:token]
 
-    mail to: @user.email, subject: 'Reset your password'
+    mail to: @user.email, subject: "Reset your password"
   end
 end
