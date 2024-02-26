@@ -1,6 +1,6 @@
 <%= turbo_frame_tag 'add_new_trait' do %>
   <%= link_to 'Close', edit_profile_path %>
-  <%= form_with(model: @trait, data: { controller: "emoji-picker" }) do |form| %>
+  <%= form_with(model: @trait, data: { controller: "emoji-picker" } ) do |form| %>
     <div class="flex">
       <%= render 'emojis/picker' %>
       <%= form.hidden_field :emoji, data: { emoji_picker_target: 'hiddenInput' } %>

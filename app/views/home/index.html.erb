@@ -1,23 +1,13 @@
-<p style="color: green"><%= notice %></p>
+<%= turbo_frame_tag 'traits_list', refresh: :moprh do %>
+  <% Current.profile.traits.interest.each do |trait| %>
+    <%= render partial: trait, locals: { edit: true} %>
+  <% end %>
+<% end %>
 
-<p>Signed as <%= Current.user.email %></p>
-
-<h2>Login and verification</h2>
-
-<div>
-  <%= link_to "Change password", edit_password_path %>
-</div>
-
-<div>
-  <%= link_to "Change email address", edit_identity_email_path %>
-</div>
-
-<h2>Access history</h2>
-
-<div>
-  <%= link_to "Devices & Sessions", sessions_path %>
-</div>
-
-<br>
-
-<%= button_to "Log out", Current.session, method: :delete %>
+<%= turbo_frame_tag 'add_new_trait' do %>
+  <%= link_to new_trait_path do %>
+    <%= content_tag :div, class: 'btn-trait bg-green-300' do %>
+      ➕ Add New
+    <% end %>
+  <% end %>
+<% end %>

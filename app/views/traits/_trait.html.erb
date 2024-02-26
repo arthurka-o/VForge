@@ -1,10 +1,8 @@
-<%= turbo_frame_tag dom_id(trait) do %>  
-  <%= content_tag :div, class: 'btn-trait' do %>
-    <% edit ||= false %>
-      <% if edit %>
-        <%= link_to 'x', trait_path(trait), data: { turbo_method: :delete, turbo_action: 'remove' }, class: 'text-red-500 pr-2' %>
-      <% end %>
-      <%= trait.emoji %>
-      <%= trait.value %>
-  <% end %>
+<%= content_tag :div, class: 'btn-trait', id: dom_id(trait) do %>
+  <% edit ||= false %>
+    <% if edit %>
+      <%= button_to 'x', trait_path(trait), method: :delete, class: 'text-red-500 pr-2' %>
+    <% end %>
+    <%= trait.emoji %>
+    <%= trait.value %>
 <% end %>

@@ -1,10 +1,9 @@
-<% @profile ||= Current.profile %>
-<%= turbo_frame_tag dom_id(@profile, "turbo") do %>
-  <%= render partial: 'profile_card' %>
 
-  <%= link_to edit_profile_path do %>
-    <div class='py-2 px-4 bg-slate-300 rounded-xl mt-2 text-center font-medium'>
-      Edit
-    </div>
-  <% end %>
+<% @profile ||= Current.profile %>
+<%= render partial: 'profile_card' %>
+
+<%= link_to edit_profile_path do %>
+  <div class='py-2 px-4 bg-slate-300 rounded-xl mt-2 text-center font-medium'>
+    Edit
+  </div>
 <% end %>

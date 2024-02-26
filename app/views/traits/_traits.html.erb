@@ -1,0 +1,7 @@
+<% edit ||= false %>
+
+<%= turbo_frame_tag 'traits' do %>
+  <% traits.interest.each do |trait| %>
+    <%= render partial: trait, locals: { edit: edit } %>
+  <% end %>
+<% end %>

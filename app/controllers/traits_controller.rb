@@ -10,17 +10,25 @@ class TraitsController < ApplicationController
   def create
     @trait = Trait.new(trait_params)
 
-    if @trait.save
-      render 'profiles/edit'
-    else
-      render :new
-    end
+    @trait.save
+    render "home/index"
+    # if @trait.save
+    #   respond_to do |format|
+    #     format.turbo_stream do
+    #       render turbo_stream: turbo_stream.append("traits", partial: "trait", locals: { trait: @trait })
+    #     end
+    #     format.html { redirect_to edit_profile_path }
+    #   end
+    # else
+    #   render :new
+    # end
   end
 
   def destroy
-    @trait = Trait.find(params[:id])
-
     @trait.destroy
+
+    redirect_to root_path
+    # redirect_to edit_profile_path
   end
 
   private

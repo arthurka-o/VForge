@@ -17,17 +17,13 @@
         
         <div class="pt-3">
           <p class="text-3x1 text-gray-500">Interests</p>
-          <%= turbo_stream_from 'traits' %>
-          <div id="traits">
-            <% @profile.traits.interest.each do |trait| %>
-              <%= render partial: trait, locals: { edit: true } %>
-            <% end %>
-          </div>
+          <%= render partial: 'traits/traits', locals: { traits: Current.profile.traits.interest, edit: true }%>
+
           <br>
           <br>
-          <%= turbo_frame_tag 'add_new_trait' do %>
+          <%= turbo_frame_tag 'add_new_trait', 'data-turbo-permanent': true do %>
             <%= link_to new_trait_path do %>
-              <%= content_tag :div, class: %w[btn-trait bg-green-300] do %>
+              <%= content_tag :div, class: 'btn-trait bg-green-300' do %>
                 ➕ Add New
               <% end %>
             <% end %>
