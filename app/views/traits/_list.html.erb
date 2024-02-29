@@ -1,0 +1,5 @@
+<div id="traits">
+  <% profile.traits.interest.each do |trait| %>
+    <%= render partial: trait, locals: { edit: true } %>
+  <% end %>
+</div>

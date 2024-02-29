@@ -10,11 +10,7 @@ class TraitsController < ApplicationController
   def create
     @trait = Trait.new(trait_params)
 
-    if @trait.save
-      render "profiles/edit"
-    else
-      render :new
-    end
+    @trait.save
   end
 
   def destroy
