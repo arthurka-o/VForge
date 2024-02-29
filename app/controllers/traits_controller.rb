@@ -11,7 +11,7 @@ class TraitsController < ApplicationController
     @trait = Trait.new(trait_params)
 
     if @trait.save
-      render 'profiles/edit'
+      render "profiles/edit"
     else
       render :new
     end

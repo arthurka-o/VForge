@@ -1,14 +1,3 @@
 inherit_gem:
   rubocop-rails-omakase: rubocop.yml
 # Individual cop configuration
-Style/Documentation:
-  Enabled: false
-
-Metrics/AbcSize:
-  Max: 30
-
-# Exclude schema.rb
-AllCops:
-  Exclude:
-    - "db/*"
-    - "config/*"
