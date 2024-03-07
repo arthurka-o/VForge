@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "add_new_trait_#{category}" do %>
+  <%= link_to new_trait_path(category: category) do %>
+    <%= content_tag :div, class: %w[btn-trait bg-green-300] do %>
+      ➕ Add New
+    <% end %>
+  <% end %>
+<% end %>

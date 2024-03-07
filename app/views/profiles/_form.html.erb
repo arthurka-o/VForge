@@ -19,17 +19,13 @@
           <p class="text-3x1 text-gray-500">Interests</p>
           <%= turbo_stream_from 'traits' %>
           <%= render partial: 'traits/list', locals: { category: :interest, edit: true } %>
-          <%= turbo_frame_tag 'add_new_trait' do %>
-            <%= render partial: 'profiles/add_new_button', locals: { category: :interest } %>
-          <% end %>
+          <%= render partial: 'traits/add_new_button', locals: { category: :interest } %>
         </div>
 
         <div class="pt-3">
           <p class="text-3x1 text-gray-500">Basics</p>
           <%= render partial: 'traits/list', locals: { category: :basic, edit: true } %>
-          <%= turbo_frame_tag 'add_new_trait' do %>
-            <%= render partial: 'profiles/add_new_button', locals: { category: :basic } %>
-          <% end %>
+          <%= render partial: 'traits/add_new_button', locals: { category: :basic } %>
         </div>
       </div>
     </div>

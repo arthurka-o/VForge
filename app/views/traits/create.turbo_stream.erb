@@ -1,3 +1,8 @@
-<%= turbo_stream.replace 'traits_' + @trait.category do %>
+<%= turbo_stream.replace "traits_#{@trait.category}" do %>
   <%= render partial: 'traits/list', locals: { category: @trait.category, edit: true } %>
+<% end %>
+
+
+<%= turbo_stream.update "add_new_trait_#{@trait.category}" do %>
+  <%= render partial: 'traits/add_new_button', locals: { category: @trait.category } %>
 <% end %>
