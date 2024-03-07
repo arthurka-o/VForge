@@ -1,3 +1,3 @@
-<%= turbo_stream.replace 'traits' do %>
-  <%= render partial: 'traits/list', locals: { profile: Current.profile, edit: true } %>
+<%= turbo_stream.replace 'traits_' + @trait.category do %>
+  <%= render partial: 'traits/list', locals: { category: @trait.category, edit: true } %>
 <% end %>

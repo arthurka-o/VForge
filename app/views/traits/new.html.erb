@@ -4,7 +4,7 @@
     <div class="flex">
       <%= render 'emojis/picker' %>
       <%= form.hidden_field :emoji, data: { emoji_picker_target: 'hiddenInput' } %>
-      <%= form.hidden_field :category, value: 'interest' %>
+      <%= form.hidden_field :category, value: @trait.category %>
       <%= form.text_field :value %>
       <%= form.submit '✅' %>
     </div>

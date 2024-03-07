@@ -10,6 +10,8 @@ class Trait < ApplicationRecord
     language: "language"
   }
 
+  scope :basic, -> { where(category: "basic").order(:name) }
+
   normalizes :name, with: -> { _1.strip.downcase }
 
   after_create_commit { broadcast_append_to "traits" }

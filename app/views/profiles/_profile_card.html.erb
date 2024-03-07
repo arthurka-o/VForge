@@ -17,16 +17,12 @@
     
     <div class="pt-3">
       <p class=" text-gray-500">Interests</p>
-      <% @profile.traits.interest.each do |trait| %>
-        <%= render partial: trait %>
-      <% end %>
+      <%= render partial: 'traits/list', locals: { category: :interest } %>
     </div>
 
     <div class="pt-3">
       <p class=" text-gray-500">Basics</p>
-      <% @profile.traits.basic.sort_by(&:name).each do |trait| %>
-        <%= render partial: trait %>
-      <% end %>
+      <%= render partial: 'traits/list', locals: { category: :basic } %>
     </div>
   </div>
 </div>

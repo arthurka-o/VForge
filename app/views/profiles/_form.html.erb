@@ -18,22 +18,17 @@
         <div class="pt-3">
           <p class="text-3x1 text-gray-500">Interests</p>
           <%= turbo_stream_from 'traits' %>
-          <%= render partial: 'traits/list', locals: { profile: @profile, edit: true } %>
-          <br>
-          <br>
+          <%= render partial: 'traits/list', locals: { category: :interest, edit: true } %>
           <%= turbo_frame_tag 'add_new_trait' do %>
-            <%= link_to new_trait_path do %>
-              <%= content_tag :div, class: %w[btn-trait bg-green-300] do %>
-                ➕ Add New
-              <% end %>
-            <% end %>
+            <%= render partial: 'profiles/add_new_button', locals: { category: :interest } %>
           <% end %>
         </div>
 
         <div class="pt-3">
           <p class="text-3x1 text-gray-500">Basics</p>
-          <% @profile.traits.basic.sort_by(&:name).each do |trait| %>
-            <%= render partial: trait, locals: { edit: true } %>
+          <%= render partial: 'traits/list', locals: { category: :basic, edit: true } %>
+          <%= turbo_frame_tag 'add_new_trait' do %>
+            <%= render partial: 'profiles/add_new_button', locals: { category: :basic } %>
           <% end %>
         </div>
       </div>

@@ -1,5 +1,6 @@
-<div id="traits">
-  <% profile.traits.interest.each do |trait| %>
-    <%= render partial: trait, locals: { edit: true } %>
+<% edit ||= false %>
+<div id="traits_<%= category %>">
+  <% Current.profile.traits.public_send(category).each do |trait| %>
+    <%= render partial: trait, locals: { edit: edit } %>
   <% end %>
 </div>

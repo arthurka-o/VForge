@@ -4,7 +4,7 @@ class TraitsController < ApplicationController
   before_action :set_trait, only: %i[destroy]
 
   def new
-    @trait = Trait.new
+    @trait = Trait.new(category: params[:category])
   end
 
   def create
