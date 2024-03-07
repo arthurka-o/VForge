@@ -1,11 +1,21 @@
 <%= form_with(model: @profile, url: profile_path, data: { controller: "auto-submit" } ) do |form| %>
   <div>
     <div class=" bg-slate-200 rounded-2xl shadow overflow-hidden mx-auto">
-      <% if @profile.avatar.attached? %>
-        <div class="p-1 pb-0">
-          <image class="rounded-2xl object-cover w-full h-full" src="<%= url_for(@profile.avatar) %>">
+      <div class="relative">
+        <%= turbo_frame_tag 'avatar', loading: :lazy do %>
+          <% if @profile.avatar.attached? %>
+            <div class="p-1 pb-0 opacity-50">
+              <image class="rounded-2xl object-cover w-full h-full" src="<%= url_for(@profile.reload.avatar) %>">
+            </div>
+          <% end %>
+        <% end %>
+        <div class="absolute inset-0 flex items-center justify-center">
+          <%= form.label :avatar, class: "cursor-pointer bg-blue-500 text-white px-4 py-2 rounded" do %>
+            Upload new Avatar
+            <%= form.file_field :avatar, class: "hidden", data: { auto_submit_target: "field", action: "input->auto-submit#update" } %>
+          <% end %>
         </div>
-      <% end %>
+      </div>        
 
       
       <div class="p-6 pt-0">

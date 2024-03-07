@@ -1,0 +1,5 @@
+<%= turbo_stream.update 'avatar' do %>
+  <div class="p-1 pb-0 opacity-50">
+    <image class="rounded-2xl object-cover w-full h-full" src="<%= url_for(@profile.avatar) %>">
+  </div>
+<% end %>

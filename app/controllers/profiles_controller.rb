@@ -8,15 +8,7 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def update
-    if @profile.update(profile_params)
-
-      respond_to do |format|
-        format.html { redirect_to @profile, notice: "Profile was successfully updated." }
-        format.turbo_stream
-      end
-    else
-      render :edit
-    end
+    @profile.update(profile_params)
   end
 
   private
